@@ -38,4 +38,16 @@ class BinaryTree:
                 print(current_node.value)
                 self._inorder_travelsal_recursive(current_node.right)
 
+        def search(self, value):
+            return self._search_recursive(value, self.root)
+
+        def _search_recursive(self, value, current_node):
+            if current_node is None:
+                return False
+            elif current_node.value == value:
+                return True
+            elif value < current_node.value:
+                return self._search_recursive(value, current_node.left)
+            else:
+                return self._search_recursive(value, current_node.right)
 

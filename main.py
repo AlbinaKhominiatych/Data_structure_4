@@ -6,15 +6,20 @@ class Node:
         self.left = None
         self.right = None
 
+
 class BinaryTree:
     def __init__(self):
         self.root = None
+        self.count = 0
 
     def insert(self, value):
+        self.count += 1
+
         if self.root is None:
             self.root = Node(value)
         else:
             self._insert_recursive(value, self.root)
+
 
     def _insert_recursive(self, value, current_node):
         if value < current_node.value:
@@ -62,3 +67,10 @@ class BinaryTree:
         while current.right is not None:
             current = current.right
         return current.value
+import random
+tree = BinaryTree()
+lst_rand = random.sample(range(10, 99), 8)
+for i in range(8):
+    tree.insert(lst_rand[i])
+tree.inorder_travelsal()
+
